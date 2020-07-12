@@ -10,21 +10,10 @@ const pool = mysql.createPool({
   queueLimit: 0
 });
 
-// export function query(query, queryParams) {
-//     let promise = pool.promise();
-
-//     return promise.query(query, queryParams).then(rows => {
-//         return rows[0];
-//     }).catch(err => {
-//         console.error(err);
-//         throw err;
-//     });
-// }
-
-const queryTest = function () {
+const query = function(query, queryParams) {
     let promise = pool.promise();
 
-    return promise.query('SELECT * FROM college_scorecard_data LIMIT 1').then(rows => {
+    return promise.query(query, queryParams).then(rows => {
         return rows[0];
     }).catch(err => {
         console.error(err);
@@ -33,5 +22,5 @@ const queryTest = function () {
 }
 
 module.exports = {
-    queryTest
+    query
 }
